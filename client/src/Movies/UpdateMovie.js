@@ -36,7 +36,12 @@ const UpdateMovie = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('You made it to submit! here is the updated movie', movie);
+		axios
+			.put(`http://localhost:5000/api/movies/${props.match.params.id}`, movie)
+			.then((response) => {
+				props.history.push('/');
+			})
+			.catch((err) => console.log(err.response));
 	};
 
 	return (
