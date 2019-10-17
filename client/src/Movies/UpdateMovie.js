@@ -34,6 +34,34 @@ const UpdateMovie = (props) => {
 		});
 	};
 
+	const changeActor = (e) => {
+		const newStars = [ ...movie.stars ];
+		newStars[0] = e.target.value;
+		setMovie({
+			...movie,
+			stars: newStars
+		});
+	};
+	const changeActor2 = (e) => {
+		e.persist();
+		console.log('e.target', e.target);
+		const newStars = [ ...movie.stars ];
+		newStars[1] = e.target.value;
+		setMovie({
+			...movie,
+			stars: newStars
+		});
+	};
+	const changeActor3 = (e) => {
+		e.persist();
+		const newStars = [ ...movie.stars ];
+		newStars[2] = e.target.value;
+		setMovie({
+			...movie,
+			stars: newStars
+		});
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
@@ -48,7 +76,11 @@ const UpdateMovie = (props) => {
 		<div>
 			<h2>Update Movie</h2>
 			<form onSubmit={handleSubmit}>
-				<input type="text" name="title" onChange={changeHandler} placeholder="title" value={movie.title} />
+				<label>
+					Movie Title:
+					<input type="text" name="title" onChange={changeHandler} placeholder="title" value={movie.title} />
+				</label>
+				Director:
 				<input
 					type="text"
 					name="director"
@@ -56,12 +88,38 @@ const UpdateMovie = (props) => {
 					placeholder="director"
 					value={movie.director}
 				/>
+				Metascore:
 				<input
 					type="number"
 					name="metascore"
 					onChange={changeHandler}
 					placeholder="metascore"
 					value={movie.metascore}
+				/>
+				Stars:
+				<input
+					changeStar={0}
+					type="text"
+					name="actor1"
+					onChange={changeActor}
+					placeholder="actor1"
+					value={movie.stars[0]}
+				/>
+				<input
+					changeStar={1}
+					type="text"
+					name="actor2"
+					onChange={changeActor2}
+					placeholder="actor1"
+					value={movie.stars[1]}
+				/>
+				<input
+					changeStar={2}
+					type="text"
+					name="actor3"
+					onChange={changeActor3}
+					placeholder="actor1"
+					value={movie.stars[2]}
 				/>
 				<button>Update Movie</button>
 			</form>
