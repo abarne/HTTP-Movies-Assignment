@@ -74,29 +74,33 @@ const UpdateMovie = (props) => {
 
 	return (
 		<div>
-			<h2>Update Movie</h2>
 			<form onSubmit={handleSubmit}>
+				<h2>Update Movie</h2>
 				<label>
 					Movie Title:
 					<input type="text" name="title" onChange={changeHandler} placeholder="title" value={movie.title} />
 				</label>
-				Director:
-				<input
-					type="text"
-					name="director"
-					onChange={changeHandler}
-					placeholder="director"
-					value={movie.director}
-				/>
-				Metascore:
-				<input
-					type="number"
-					name="metascore"
-					onChange={changeHandler}
-					placeholder="metascore"
-					value={movie.metascore}
-				/>
-				Stars:
+				<label>
+					Director:
+					<input
+						type="text"
+						name="director"
+						onChange={changeHandler}
+						placeholder="director"
+						value={movie.director}
+					/>
+				</label>
+				<label>
+					Metascore:
+					<input
+						type="number"
+						name="metascore"
+						onChange={changeHandler}
+						placeholder="metascore"
+						value={movie.metascore}
+					/>
+				</label>
+				<label>Stars:</label>
 				<input
 					changeStar={0}
 					type="text"
@@ -121,6 +125,7 @@ const UpdateMovie = (props) => {
 					placeholder="actor1"
 					value={movie.stars[2]}
 				/>
+
 				<button>Update Movie</button>
 			</form>
 		</div>
